@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FlightOfferSearchService {
+    
     @Autowired
     private Amadeus amadeus;
 
@@ -19,12 +20,12 @@ public class FlightOfferSearchService {
         try {
             FlightOfferSearch[] flightOfferSearchs = amadeus.shopping.flightOffersSearch
                     .get(Params.with("originLocationCode", originLocationCode).and("destinationLocationCode", destinationLocationCode)
-                            .and("departureDate", departureDate).and("returnDate", returnDate).and("adults", adults).and("children", 3).and("max", 1));
+                            .and("departureDate", departureDate).and("returnDate", returnDate).and("adults", adults).and("children", 3));
             return flightOfferSearchs;
         } catch (ResponseException e) {
             e.printStackTrace();
         }
-        return null;
+        return new FlightOfferSearch[]{};
     }
 
 }
