@@ -20,7 +20,7 @@ public class FlightOfferSearchService {
         try {
             FlightOfferSearch[] flightOfferSearchs = amadeus.shopping.flightOffersSearch
                     .get(Params.with("originLocationCode", originLocationCode).and("destinationLocationCode", destinationLocationCode)
-                            .and("departureDate", departureDate).and("returnDate", returnDate).and("adults", adults).and("children", 3));
+                            .and("departureDate", departureDate).and("returnDate", returnDate).and("adults", adults));
             return flightOfferSearchs;
         } catch (ResponseException e) {
             e.printStackTrace();
