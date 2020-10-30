@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Amadeus properties ###
+src\\main\\resources\\amadeus.properties
