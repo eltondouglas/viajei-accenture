@@ -3,6 +3,7 @@ package com.accenture.gama.viajei.controller;
 import java.time.LocalDate;
 
 import com.accenture.gama.viajei.service.FlightOfferSearchService;
+import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,12 @@ public class FlightOfferSearchController {
     @Autowired
     private FlightOfferSearchService amadeusService;
 
-    @GetMapping("/flight-offers-price")
+    @GetMapping("flight-offers-price")
     public FlightOfferSearch[] getFlightOffersPrice(@RequestParam String originLocationCode,
             @RequestParam String destinationLocationCode, @RequestParam String departureDate,
-            @RequestParam String returnDate, @RequestParam int adults) {
-        return this.amadeusService.getFlightOffersPrice(originLocationCode, destinationLocationCode, LocalDate.parse(departureDate),
-                LocalDate.parse(returnDate), adults);
+            @RequestParam String returnDate, @RequestParam int adults) throws ResponseException {
+        return this.amadeusService.getFlightOffersPrice(originLocationCode, destinationLocationCode,
+                LocalDate.parse(departureDate), LocalDate.parse(returnDate), adults);
     }
 
 }
