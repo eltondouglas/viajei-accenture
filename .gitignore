@@ -38,4 +38,4 @@ out/
 
 ### Amadeus properties ###
 src\\main\\resources\\amadeus.properties
-database/viajei-database.mv.db
+database/
