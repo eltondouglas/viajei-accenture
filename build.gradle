@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.accenture.gama'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
@@ -15,6 +15,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'me.pagar', name: 'pagarme-java', version: '1.5.9'
+	
 	// https://mvnrepository.com/artifact/com.google.code.gson/gson
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 	// https://mvnrepository.com/artifact/com.amadeus/amadeus-java
