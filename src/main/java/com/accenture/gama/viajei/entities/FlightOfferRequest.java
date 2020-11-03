@@ -3,9 +3,11 @@ package com.accenture.gama.viajei.entities;
 import java.util.Arrays;
 import java.util.List;
 
+import com.accenture.gama.viajei.entities.enuns.CurrencyCode;
+
 
 public class FlightOfferRequest {
-    private String currencyCode;
+    private CurrencyCode currencyCode;
     private List<OriginDestination> originDestinations;
     private List<Traveler> travelers;
     private List<String> sources;
@@ -15,11 +17,11 @@ public class FlightOfferRequest {
         this.sources = Arrays.asList("GDS");
     }
 
-    public String getCurrencyCode() {
+    public CurrencyCode getCurrencyCode() {
         return currencyCode;
     }
 
-    public void setCurrencyCode(String currencyCode) {
+    public void setCurrencyCode(CurrencyCode currencyCode) {
         this.currencyCode = currencyCode;
     }
 
