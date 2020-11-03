@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
-import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -29,11 +28,10 @@ public class SwaggerConfig implements WebMvcConfigurer {
     }
 
     private ApiInfo getInfo() {
-        /*return new ApiInfo("Viajei",
+        return new ApiInfo("Viajei",
                 "API desenvolvida com Spring Boot para consumir e gerenciar compra de passagens aéreas.", "1.0", "",
                 new Contact("Coffee and Coders", "url",
                         "email"),
-                "", "", Collections.emptyList());*/
-        return new ApiInfoBuilder().title("title").build();
+                "", "", Collections.emptyList());
     }
 }
