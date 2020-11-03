@@ -5,7 +5,6 @@ import java.util.List;
 
 
 public class FlightOfferRequest {
-    private Long id;
     private String currencyCode;
     private List<OriginDestination> originDestinations;
     private List<Traveler> travelers;
@@ -54,9 +53,5 @@ public class FlightOfferRequest {
 
     public void setSearchCriteria(SearchCriteria searchCriteria) {
         this.searchCriteria = searchCriteria;
-    }
-
-    public Long getId() {
-        return id;
     }
 }
