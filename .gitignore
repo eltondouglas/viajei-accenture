@@ -38,4 +38,7 @@ out/
 
 ### Amadeus properties ###
 src\\main\\resources\\amadeus.properties
+#database#
 database/
+#Amadeus properties#
+src/main/resources/amadeus.properties
