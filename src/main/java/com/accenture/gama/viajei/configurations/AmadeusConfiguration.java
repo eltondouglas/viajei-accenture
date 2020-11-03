@@ -1,4 +1,4 @@
-package com.accenture.gama.viajei.configuration;
+package com.accenture.gama.viajei.configurations;
 
 import com.amadeus.Amadeus;
 
