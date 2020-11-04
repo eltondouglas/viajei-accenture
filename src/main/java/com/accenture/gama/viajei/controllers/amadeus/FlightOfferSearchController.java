@@ -1,4 +1,4 @@
-package com.accenture.gama.viajei.controllers;
+package com.accenture.gama.viajei.controllers.amadeus;
 
 import com.accenture.gama.viajei.entities.FlightOfferRequest;
 import com.accenture.gama.viajei.service.FlightOfferSearchService;
