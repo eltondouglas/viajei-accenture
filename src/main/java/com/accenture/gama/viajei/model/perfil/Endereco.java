@@ -1,13 +1,25 @@
 package com.accenture.gama.viajei.model.perfil;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Endereco {
 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String logradouro;
 	private String numero;
 	private String bairro;
 	private String cidade;
 	private String cep;
 	private String complemento;
+	
+	@OneToOne
+	private Estado estado;
 
 	public String getLogradouro() {
 		return logradouro;
