@@ -4,8 +4,6 @@ import com.accenture.gama.viajei.entities.FlightOfferRequest;
 import com.accenture.gama.viajei.entities.FlightOfferSearchRequest;
 import com.accenture.gama.viajei.service.amadeus.shopping.FlightOfferSearchService;
 import com.amadeus.exceptions.ResponseException;
-import com.amadeus.resources.FlightOfferSearch;
-import com.amadeus.resources.FlightPrice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
