@@ -5,7 +5,6 @@ import java.util.List;
 import com.accenture.gama.viajei.entities.enuns.CurrencyCode;
 import com.accenture.gama.viajei.entities.enuns.FlightOfferSource;
 
-
 public class FlightOfferRequest {
     private CurrencyCode currencyCode;
     private List<OriginDestination> originDestinations;

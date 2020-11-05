@@ -1,5 +1,7 @@
 package com.accenture.gama.viajei.service.amadeus.shopping;
 
+import com.accenture.gama.viajei.controllers.amadeus.shopping.FlightOfferSearchResponse;
+import com.accenture.gama.viajei.controllers.amadeus.shopping.FlightPriceResponse;
 import com.accenture.gama.viajei.entities.FlightOfferRequest;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
@@ -20,20 +22,24 @@ public class FlightOfferSearchService {
     @Autowired
     private Gson gson;
 
-    public FlightOfferSearch[] getFlightOffers(FlightOfferRequest flightOffers) throws ResponseException {
+    public FlightOfferSearchResponse[] getFlightOffers(FlightOfferRequest flightOffers) throws ResponseException {
         try {
-            return this.amadeus.shopping.flightOffersSearch.post(this.gson.toJson(flightOffers));
+            FlightOfferSearch[] flightOfferSearchs = this.amadeus.shopping.flightOffersSearch
+                    .post(this.gson.toJson(flightOffers));
+            return this.gson.fromJson(this.gson.toJson(flightOfferSearchs), FlightOfferSearchResponse[].class);
         } catch (ResponseException e) {
             e.printStackTrace();
             throw new ResponseException(e.getResponse());
         }
-        
+
     }
 
-    public FlightPrice getFlightOffersPrice(FlightOfferSearch flightOffers) throws ResponseException {
+    public FlightPriceResponse getFlightOffersPrice(FlightOfferSearch[] flightOffers) throws ResponseException {
         try {
-            return amadeus.shopping.flightOffersSearch.pricing.post(flightOffers,
+            FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(flightOffers,
                     Params.with("include", "detailed-fare-rules").and("forceClass", "false"));
+            return this.gson.fromJson(this.gson.toJson(flightPrice), FlightPriceResponse.class);
+
         } catch (ResponseException e) {
             e.printStackTrace();
             throw new ResponseException(e.getResponse());
