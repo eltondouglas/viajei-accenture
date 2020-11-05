@@ -1,10 +1,9 @@
 package com.accenture.gama.viajei.entities;
 
-import com.amadeus.resources.Traveler;
 
 public class FlightOrderRequest {
     private FlightOfferSearchResponse[] flightOfferSearchs;
-    private Traveler[] travelers;
+    private TravelerRequest[] travelers;
 
     public FlightOfferSearchResponse[] getFlightOfferSearchs() {
         return flightOfferSearchs;
@@ -14,11 +13,11 @@ public class FlightOrderRequest {
         this.flightOfferSearchs = flightOfferSearchs;
     }
 
-    public Traveler[] getTravelers() {
+    public TravelerRequest[] getTravelers() {
         return travelers;
     }
 
-    public void setTravelers(Traveler[] travelers) {
+    public void setTravelers(TravelerRequest[] travelers) {
         this.travelers = travelers;
     }
 

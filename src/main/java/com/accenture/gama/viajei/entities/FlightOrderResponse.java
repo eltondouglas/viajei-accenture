@@ -1,10 +1,10 @@
 package com.accenture.gama.viajei.entities;
 
-import com.amadeus.resources.FlightPrice;
+import com.amadeus.resources.FlightOrder;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-@JsonIgnoreProperties(value = {"bookingRequirements","response"})
-public class FlightPriceResponse extends FlightPrice {
 
+@JsonIgnoreProperties(value = {"response"})
+public class FlightOrderResponse extends FlightOrder {
     @Override
     public FlightOfferSearchResponse[] getFlightOffers() {
         return (FlightOfferSearchResponse[]) super.getFlightOffers();
