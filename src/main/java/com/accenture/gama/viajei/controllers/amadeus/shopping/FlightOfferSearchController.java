@@ -2,6 +2,8 @@ package com.accenture.gama.viajei.controllers.amadeus.shopping;
 
 import com.accenture.gama.viajei.entities.FlightOfferRequest;
 import com.accenture.gama.viajei.entities.FlightOfferSearchRequest;
+import com.accenture.gama.viajei.entities.FlightOfferSearchResponse;
+import com.accenture.gama.viajei.entities.FlightPriceResponse;
 import com.accenture.gama.viajei.service.amadeus.shopping.FlightOfferSearchService;
 import com.amadeus.exceptions.ResponseException;
 

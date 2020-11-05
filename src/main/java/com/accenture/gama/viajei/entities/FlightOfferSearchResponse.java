@@ -1,4 +1,4 @@
-package com.accenture.gama.viajei.controllers.amadeus.shopping;
+package com.accenture.gama.viajei.entities;
 
 import com.amadeus.resources.FlightOfferSearch;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
