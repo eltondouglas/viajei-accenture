@@ -15,9 +15,7 @@ public class FlighOfferSearchHandlerException {
 
     @ExceptionHandler({ResponseException.class})
     public ResponseEntity<String> handlerMethodArgumentNotValid(ResponseException ex) {
-        int statusCode = ex.getResponse().getStatusCode();
-        System.out.println("Status Code: "+statusCode);
-        return new ResponseEntity<>(ex.getLocalizedMessage(), HttpStatus.resolve(statusCode));
+        return new ResponseEntity<>(ex.getLocalizedMessage(), HttpStatus.resolve(ex.getResponse().getStatusCode()));
     }
     
 }
