@@ -25,6 +25,9 @@ dependencies {
 	compile group: 'io.springfox', name: 'springfox-data-rest', version: '3.0.0'
 	// https://mvnrepository.com/artifact/io.springfox/springfox-bean-validators
 	compile group: 'io.springfox', name: 'springfox-bean-validators', version: '3.0.0'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {

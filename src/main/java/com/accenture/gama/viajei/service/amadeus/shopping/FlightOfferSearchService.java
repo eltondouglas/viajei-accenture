@@ -4,7 +4,7 @@ import com.accenture.gama.viajei.entities.FlightOfferRequest;
 import com.accenture.gama.viajei.entities.FlightOfferSearchResponse;
 import com.accenture.gama.viajei.entities.FlightOrderResponse;
 import com.accenture.gama.viajei.entities.FlightOrderRequest;
-import com.accenture.gama.viajei.entities.FlightPricingResponse;
+import com.accenture.gama.viajei.entities.FlightPriceResponse;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
@@ -37,11 +37,11 @@ public class FlightOfferSearchService {
 
     }
 
-    public FlightPricingResponse getFlightOffersPrice(FlightOfferSearch[] flightOffers) throws ResponseException {
+    public FlightPriceResponse getFlightOffersPrice(FlightOfferSearchResponse[] flightOffers) throws ResponseException {
         try {
-            FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(flightOffers,
+            FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(this.gson.fromJson(this.gson.toJson(flightOffers), FlightOfferSearch[].class),
                     Params.with("include", "detailed-fare-rules").and("forceClass", "false"));
-            return this.gson.fromJson(this.gson.toJson(flightPrice), FlightPricingResponse.class);
+            return this.gson.fromJson(this.gson.toJson(flightPrice), FlightPriceResponse.class);
 
         } catch (ResponseException e) {
             e.printStackTrace();
@@ -51,7 +51,7 @@ public class FlightOfferSearchService {
 
     public FlightOrderResponse creatFlightOrder(FlightOrderRequest flightOrderRequest) throws ResponseException {
         try {
-            FlightOrder flightOrder = amadeus.booking.flightOrders.post(flightOrderRequest.getFlightOfferSearchs(),
+            FlightOrder flightOrder = amadeus.booking.flightOrders.post(this.gson.fromJson(this.gson.toJson(flightOrderRequest.getFlightOfferSearchs()), FlightOfferSearch[].class),
                     flightOrderRequest.getTravelers());
             return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrderResponse.class);
         } catch (ResponseException e) {
