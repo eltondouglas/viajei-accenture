@@ -2,8 +2,6 @@ package com.accenture.gama.viajei.entities;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
-
 import com.accenture.gama.viajei.entities.enuns.CurrencyCode;
 import com.accenture.gama.viajei.entities.enuns.FlightOfferSource;
 
@@ -11,11 +9,9 @@ import com.accenture.gama.viajei.entities.enuns.FlightOfferSource;
 public class FlightOfferRequest {
     private CurrencyCode currencyCode;
     private List<OriginDestination> originDestinations;
-    private List<Traveler> travelers;
+    private List<TravelerRequest> travelers;
     private List<FlightOfferSource> sources;
     private SearchCriteria searchCriteria;
-    @NotNull(message = "teste")
-    private String t;
     
 
     public CurrencyCode getCurrencyCode() {
@@ -34,11 +30,11 @@ public class FlightOfferRequest {
         this.originDestinations = originDestinations;
     }
 
-    public List<Traveler> getTravelers() {
+    public List<TravelerRequest> getTravelers() {
         return travelers;
     }
 
-    public void setTravelers(List<Traveler> travelers) {
+    public void setTravelers(List<TravelerRequest> travelers) {
         this.travelers = travelers;
     }
 
@@ -56,13 +52,5 @@ public class FlightOfferRequest {
 
     public void setSearchCriteria(SearchCriteria searchCriteria) {
         this.searchCriteria = searchCriteria;
-    }
-
-    public @NotNull(message = "teste") String getT() {
-        return t;
-    }
-
-    public void setT(@NotNull(message = "teste") String t) {
-        this.t = t;
     }
 }

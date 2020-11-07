@@ -2,13 +2,13 @@ package com.accenture.gama.viajei.entities;
 
 public class SearchCriteria {
 
-    private Integer maxFlightOffers;
+    private int maxFlightOffers;
 
-    public Integer getMaxFlightOffers() {
+    public int getMaxFlightOffers() {
         return maxFlightOffers;
     }
 
-    public void setMaxFlightOffers(Integer maxFlightOffers) {
+    public void setMaxFlightOffers(int maxFlightOffers) {
         this.maxFlightOffers = maxFlightOffers;
     }
     

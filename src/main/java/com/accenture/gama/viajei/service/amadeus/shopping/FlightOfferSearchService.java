@@ -11,6 +11,7 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.FlightOrder;
 import com.amadeus.resources.FlightPrice;
+import com.amadeus.resources.Traveler;
 import com.google.gson.Gson;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,8 @@ public class FlightOfferSearchService {
 
     public FlightPriceResponse getFlightOffersPrice(FlightOfferSearchResponse[] flightOffers) throws ResponseException {
         try {
-            FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(this.gson.fromJson(this.gson.toJson(flightOffers), FlightOfferSearch[].class),
+            FlightOfferSearch[] flightOfferSearchs = this.gson.fromJson(this.gson.toJson(flightOffers), FlightOfferSearch[].class);
+            FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(flightOfferSearchs,
                     Params.with("include", "detailed-fare-rules").and("forceClass", "false"));
             return this.gson.fromJson(this.gson.toJson(flightPrice), FlightPriceResponse.class);
 
@@ -51,8 +53,9 @@ public class FlightOfferSearchService {
 
     public FlightOrderResponse creatFlightOrder(FlightOrderRequest flightOrderRequest) throws ResponseException {
         try {
-            FlightOrder flightOrder = amadeus.booking.flightOrders.post(this.gson.fromJson(this.gson.toJson(flightOrderRequest.getFlightOfferSearchs()), FlightOfferSearch[].class),
-                    flightOrderRequest.getTravelers());
+            Traveler[] travelers = this.gson.fromJson(this.gson.toJson(flightOrderRequest.getTravelers()), Traveler[].class);
+            FlightPrice flightPriceResponse =  this.gson.fromJson(this.gson.toJson(flightOrderRequest.getFlightPrice()), FlightPrice.class);
+            FlightOrder flightOrder = amadeus.booking.flightOrders.post(flightPriceResponse, travelers);
             return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrderResponse.class);
         } catch (ResponseException e) {
             e.printStackTrace();

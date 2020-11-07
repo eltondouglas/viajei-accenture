@@ -1,17 +1,17 @@
 package com.accenture.gama.viajei.entities;
 
 public class TravelerPricing {
-    private Integer travelerId;
+    private int travelerId;
     private String fareOption;
     private String travelerType;
     private SearchPrice price;
     private FareDetailsBySegment[] fareDetailsBySegment;
 
-    public Integer getTravelerId() {
+    public int getTravelerId() {
         return travelerId;
     }
 
-    public void setTravelerId(Integer travelerId) {
+    public void setTravelerId(int travelerId) {
         this.travelerId = travelerId;
     }
 

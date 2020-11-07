@@ -1,5 +1,6 @@
 package com.accenture.gama.viajei.entities;
 
+
 public class FlightOfferSearchResponse {
     private String type;
     private String id;

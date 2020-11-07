@@ -1,13 +1,17 @@
 package com.accenture.gama.viajei.entities;
 
 public class OriginDestination {
-    private Integer id;
+    private String id;
     private String originLocationCode;
     private String destinationLocationCode;
     private DepartureDateTimeRange departureDateTimeRange;
 
-    public Integer getId() {
+    public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
     
     public String getOriginLocationCode() {

@@ -2,22 +2,22 @@ package com.accenture.gama.viajei.entities;
 
 
 public class FlightOrderRequest {
-    private FlightOfferSearchResponse[] flightOfferSearchs;
-    private TravelerRequest[] travelers;
+    private FlightPriceResponse flightPrice;
+    private TravelerResponse[] travelers;
 
-    public FlightOfferSearchResponse[] getFlightOfferSearchs() {
-        return flightOfferSearchs;
+    public FlightPriceResponse getFlightPrice() {
+        return flightPrice;
     }
 
-    public void setFlightOfferSearchs(FlightOfferSearchResponse[] flightOfferSearchs) {
-        this.flightOfferSearchs = flightOfferSearchs;
+    public void setlightPrice(FlightPriceResponse flightOfferSearchs) {
+        this.flightPrice = flightOfferSearchs;
     }
 
-    public TravelerRequest[] getTravelers() {
+    public TravelerResponse[] getTravelers() {
         return travelers;
     }
 
-    public void setTravelers(TravelerRequest[] travelers) {
+    public void setTravelers(TravelerResponse[] travelers) {
         this.travelers = travelers;
     }
 

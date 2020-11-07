@@ -1,14 +1,15 @@
 package com.accenture.gama.viajei.entities;
 
-public class IncludedCheckedBags {
-    private Integer weight;
+
+public class IncludedCheckedBags{
+    private int weight;
     private String weightUnit;
 
-    public Integer getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 

@@ -1,9 +1,12 @@
 package com.accenture.gama.viajei.entities;
 
-public class FareDetailsBySegment {
+import com.google.gson.annotations.SerializedName;
+
+public class FareDetailsBySegment  {
     private String segmentId;
     private String cabin;
     private String fareBasis;
+    @SerializedName("class")
     private String segmentClass;
     private IncludedCheckedBags includedCheckedBags;
 
