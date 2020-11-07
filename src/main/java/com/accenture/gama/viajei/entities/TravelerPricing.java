@@ -1,9 +1,11 @@
 package com.accenture.gama.viajei.entities;
 
+import com.accenture.gama.viajei.entities.enuns.TravelerType;
+
 public class TravelerPricing {
     private int travelerId;
     private String fareOption;
-    private String travelerType;
+    private TravelerType travelerType;
     private SearchPrice price;
     private FareDetailsBySegment[] fareDetailsBySegment;
 
@@ -23,11 +25,11 @@ public class TravelerPricing {
         this.fareOption = fareOption;
     }
 
-    public String getTravelerType() {
+    public TravelerType getTravelerType() {
         return travelerType;
     }
 
-    public void setTravelerType(String travelerType) {
+    public void setTravelerType(TravelerType travelerType) {
         this.travelerType = travelerType;
     }
 

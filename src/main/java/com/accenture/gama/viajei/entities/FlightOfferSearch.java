@@ -1,10 +1,11 @@
 package com.accenture.gama.viajei.entities;
 
+import com.accenture.gama.viajei.entities.enuns.FlightOfferSource;
 
 public class FlightOfferSearch {
     private String type;
     private String id;
-    private String source;
+    private FlightOfferSource source;
     private boolean instantTicketingRequired;
     private boolean nonHomogeneous;
     private boolean oneWay;
@@ -33,11 +34,11 @@ public class FlightOfferSearch {
         this.id = id;
     }
 
-    public String getSource() {
+    public FlightOfferSource getSource() {
         return source;
     }
 
-    public void setSource(String source) {
+    public void setSource(FlightOfferSource source) {
         this.source = source;
     }
 
