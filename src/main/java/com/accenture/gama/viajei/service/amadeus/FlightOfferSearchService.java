@@ -1,10 +1,11 @@
 package com.accenture.gama.viajei.service.amadeus;
 
-import com.accenture.gama.viajei.entities.FlightOfferSearchRequest;
-import com.accenture.gama.viajei.entities.FlightOfferSearch;
-import com.accenture.gama.viajei.entities.FlightOrder;
-import com.accenture.gama.viajei.entities.FlightOrderRequest;
-import com.accenture.gama.viajei.entities.FlightPrice;
+import com.accenture.gama.viajei.models.amadeus.FlightOfferSearch;
+import com.accenture.gama.viajei.models.amadeus.FlightOfferSearchRequest;
+import com.accenture.gama.viajei.models.amadeus.FlightOrder;
+import com.accenture.gama.viajei.models.amadeus.FlightOrderRequest;
+import com.accenture.gama.viajei.models.amadeus.FlightPrice;
+import com.accenture.gama.viajei.models.amadeus.FlightPriceRequest;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
@@ -35,9 +36,9 @@ public class FlightOfferSearchService {
 
     }
 
-    public FlightPrice getFlightOffersPrice(FlightOfferSearch[] flightOffers) throws ResponseException {
+    public FlightPrice getFlightOffersPrice(FlightPriceRequest flightPriceRequest) throws ResponseException {
         try {
-            com.amadeus.resources.FlightOfferSearch[] flightOfferSearchs = this.gson.fromJson(this.gson.toJson(flightOffers), com.amadeus.resources.FlightOfferSearch[].class);
+            com.amadeus.resources.FlightOfferSearch[] flightOfferSearchs = this.gson.fromJson(this.gson.toJson(flightPriceRequest.getFlightOffers()), com.amadeus.resources.FlightOfferSearch[].class);
             com.amadeus.resources.FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(flightOfferSearchs,
                     Params.with("include", "detailed-fare-rules").and("forceClass", "false"));
             return this.gson.fromJson(this.gson.toJson(flightPrice), FlightPrice.class);
