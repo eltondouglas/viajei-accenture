@@ -1,10 +1,11 @@
 package com.accenture.gama.viajei.service.amadeus;
 
-import com.accenture.gama.viajei.entities.FlightOfferSearchRequest;
-import com.accenture.gama.viajei.entities.FlightOfferSearch;
-import com.accenture.gama.viajei.entities.FlightOrder;
-import com.accenture.gama.viajei.entities.FlightOrderRequest;
-import com.accenture.gama.viajei.entities.FlightPrice;
+import com.accenture.gama.viajei.model.amadeus.FlightOfferSearch;
+import com.accenture.gama.viajei.model.amadeus.FlightOfferSearchRequest;
+import com.accenture.gama.viajei.model.amadeus.FlightOrder;
+import com.accenture.gama.viajei.model.amadeus.FlightOrderRequest;
+import com.accenture.gama.viajei.model.amadeus.FlightPrice;
+import com.accenture.gama.viajei.model.amadeus.FlightPriceRequest;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
@@ -35,9 +36,9 @@ public class FlightOfferSearchService {
 
     }
 
-    public FlightPrice getFlightOffersPrice(FlightOfferSearch[] flightOffers) throws ResponseException {
+    public FlightPrice getFlightOffersPrice(FlightPriceRequest flightPriceRequest) throws ResponseException {
         try {
-            com.amadeus.resources.FlightOfferSearch[] flightOfferSearchs = this.gson.fromJson(this.gson.toJson(flightOffers), com.amadeus.resources.FlightOfferSearch[].class);
+            com.amadeus.resources.FlightOfferSearch[] flightOfferSearchs = this.gson.fromJson(this.gson.toJson(flightPriceRequest.getFlightOffers()), com.amadeus.resources.FlightOfferSearch[].class);
             com.amadeus.resources.FlightPrice flightPrice = amadeus.shopping.flightOffersSearch.pricing.post(flightOfferSearchs,
                     Params.with("include", "detailed-fare-rules").and("forceClass", "false"));
             return this.gson.fromJson(this.gson.toJson(flightPrice), FlightPrice.class);
@@ -59,5 +60,15 @@ public class FlightOfferSearchService {
             throw new ResponseException(e.getResponse());
         }
     }
+
+	public FlightOrder getFlightOrderById(String flightOrderId) throws ResponseException {
+        com.amadeus.resources.FlightOrder flightOrder = amadeus.booking.flightOrder(flightOrderId).get();
+        return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrder.class);
+    }
+    
+    public FlightOrder deleteFlightOrderById(String flightOrderId) throws ResponseException {
+        com.amadeus.resources.FlightOrder flightOrder = amadeus.booking.flightOrder(flightOrderId).delete();
+        return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrder.class);
+	}
 
 }
