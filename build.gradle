@@ -27,6 +27,8 @@ dependencies {
 	compile group: 'io.springfox', name: 'springfox-bean-validators', version: '3.0.0'
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+	compile group: 'me.pagar', name: 'pagarme-java', version: '1.5.9'
+	
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
