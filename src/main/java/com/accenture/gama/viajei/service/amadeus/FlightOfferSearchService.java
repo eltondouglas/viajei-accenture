@@ -61,4 +61,14 @@ public class FlightOfferSearchService {
         }
     }
 
+	public FlightOrder getFlightOrderById(String flightOrderId) throws ResponseException {
+        com.amadeus.resources.FlightOrder flightOrder = amadeus.booking.flightOrder(flightOrderId).get();
+        return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrder.class);
+    }
+    
+    public FlightOrder deleteFlightOrderById(String flightOrderId) throws ResponseException {
+        com.amadeus.resources.FlightOrder flightOrder = amadeus.booking.flightOrder(flightOrderId).delete();
+        return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrder.class);
+	}
+
 }
