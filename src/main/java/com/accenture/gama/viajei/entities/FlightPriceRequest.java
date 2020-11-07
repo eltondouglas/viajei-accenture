@@ -1,8 +1,8 @@
 package com.accenture.gama.viajei.entities;
 
-public class FlightPriceResponse{
+public class FlightPriceRequest {
     private String type;
-    private FlightOfferSearchResponse[] flightOffers;
+    private FlightOfferSearchRequest[] flightOffers;
 
     public String getType() {
         return type;
@@ -12,13 +12,11 @@ public class FlightPriceResponse{
         this.type = type;
     }
 
-    public FlightOfferSearchResponse[] getFlightOffers() {
+    public FlightOfferSearchRequest[] getFlightOffers() {
         return flightOffers;
     }
 
-    public void setFlightOffers(FlightOfferSearchResponse[] flightOffers) {
+    public void setFlightOffers(FlightOfferSearchRequest[] flightOffers) {
         this.flightOffers = flightOffers;
     }
-
-    
 }

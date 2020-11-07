@@ -1,12 +1,12 @@
 package com.accenture.gama.viajei.entities;
 
-public class FlightOrderResponse {
+public class FlightOrder {
     private String type;
     private String id;
     private String queuingOfficeId;
     private AssociatedRecord[] associatedRecords;
     private TravelerResponse[] travelers;
-    private FlightOfferSearchResponse[] flightOffers;
+    private FlightOfferSearch[] flightOffers;
 
     public String getType() {
         return type;
@@ -48,11 +48,11 @@ public class FlightOrderResponse {
         this.travelers = travelers;
     }
 
-    public FlightOfferSearchResponse[] getFlightOffers() {
+    public FlightOfferSearch[] getFlightOffers() {
         return flightOffers;
     }
 
-    public void setFlightOffers(FlightOfferSearchResponse[] flightOffers) {
+    public void setFlightOffers(FlightOfferSearch[] flightOffers) {
         this.flightOffers = flightOffers;
     }
 

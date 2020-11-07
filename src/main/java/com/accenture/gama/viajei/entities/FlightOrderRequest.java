@@ -2,14 +2,14 @@ package com.accenture.gama.viajei.entities;
 
 
 public class FlightOrderRequest {
-    private FlightPriceResponse flightPrice;
+    private FlightPrice flightPrice;
     private TravelerResponse[] travelers;
 
-    public FlightPriceResponse getFlightPrice() {
+    public FlightPrice getFlightPrice() {
         return flightPrice;
     }
 
-    public void setlightPrice(FlightPriceResponse flightOfferSearchs) {
+    public void setlightPrice(FlightPrice flightOfferSearchs) {
         this.flightPrice = flightOfferSearchs;
     }
 
