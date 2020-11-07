@@ -1,11 +1,11 @@
 package com.accenture.gama.viajei.controllers.amadeus;
 
-import com.accenture.gama.viajei.models.amadeus.FlightOfferSearch;
-import com.accenture.gama.viajei.models.amadeus.FlightOfferSearchRequest;
-import com.accenture.gama.viajei.models.amadeus.FlightOrder;
-import com.accenture.gama.viajei.models.amadeus.FlightOrderRequest;
-import com.accenture.gama.viajei.models.amadeus.FlightPrice;
-import com.accenture.gama.viajei.models.amadeus.FlightPriceRequest;
+import com.accenture.gama.viajei.model.amadeus.FlightOfferSearch;
+import com.accenture.gama.viajei.model.amadeus.FlightOfferSearchRequest;
+import com.accenture.gama.viajei.model.amadeus.FlightOrder;
+import com.accenture.gama.viajei.model.amadeus.FlightOrderRequest;
+import com.accenture.gama.viajei.model.amadeus.FlightPrice;
+import com.accenture.gama.viajei.model.amadeus.FlightPriceRequest;
 import com.accenture.gama.viajei.service.amadeus.FlightOfferSearchService;
 import com.amadeus.exceptions.ResponseException;
 
