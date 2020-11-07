@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.accenture.gama'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
@@ -28,6 +28,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
 	compile group: 'me.pagar', name: 'pagarme-java', version: '1.5.9'
+	runtimeOnly 'mysql:mysql-connector-java'
 	
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
