@@ -65,4 +65,10 @@ public class AutenticacaoController {
 		
         
 	}
+	
+	@PostMapping("logout")
+	public void logout() {
+		throw new IllegalStateException(
+                "This method shouldn't be called. It's implemented by Spring Security filters.");
+	}
 }
