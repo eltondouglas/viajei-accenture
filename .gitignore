@@ -38,5 +38,4 @@ out/
 
 #database#
 database/
-#Amadeus properties#
-src/main/resources/amadeus.properties
+
