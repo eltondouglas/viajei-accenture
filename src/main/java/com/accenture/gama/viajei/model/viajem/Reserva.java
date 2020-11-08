@@ -14,21 +14,32 @@ import com.accenture.gama.viajei.model.viajem.enumns.ReservaStatus;
 
 @Entity
 public class Reserva {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "ordem_id")
 	private String ordemId;
-	
+
 	private BigDecimal preco;
-	
+
 	@Column(name = "pagamento_id")
 	private Integer pagamentoId;
-	
+
 	@Enumerated(EnumType.STRING)
 	private ReservaStatus status;
+
+	@Column(name = "viajante_id")
+	private Integer viajanteId;
+
+	public void setViajanteId(Integer viajanteId) {
+		this.viajanteId = viajanteId;
+	}
+
+	public Integer getViajanteId() {
+		return viajanteId;
+	}
 
 	public String getOrdemId() {
 		return ordemId;
@@ -65,7 +76,5 @@ public class Reserva {
 	public Integer getId() {
 		return id;
 	}
-	
-	
 
 }
