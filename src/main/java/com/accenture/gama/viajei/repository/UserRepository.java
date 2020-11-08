@@ -1,7 +1,8 @@
 package com.accenture.gama.viajei.repository;
 
 
-import com.accenture.gama.viajei.model.ApplicationUser;
+
+import com.accenture.gama.viajei.model.perfil.ApplicationUser;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;

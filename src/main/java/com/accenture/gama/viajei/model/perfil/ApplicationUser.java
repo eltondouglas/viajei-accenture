@@ -1,4 +1,4 @@
-package com.accenture.gama.viajei.model;
+package com.accenture.gama.viajei.model.perfil;
 
 import java.util.Set;
 

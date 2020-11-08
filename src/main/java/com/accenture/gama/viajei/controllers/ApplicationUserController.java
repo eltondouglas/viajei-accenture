@@ -2,7 +2,7 @@ package com.accenture.gama.viajei.controllers;
 
 import javax.validation.Valid;
 
-import com.accenture.gama.viajei.model.ApplicationUser;
+import com.accenture.gama.viajei.model.perfil.ApplicationUser;
 import com.accenture.gama.viajei.service.ApplicationUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class ApplicationUserController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public void signUp(@Valid @RequestBody ApplicationUser user) {
         this.applicationUserService.create(user);
-    }
+    }  
 
     @ApiOperation("Login.")
     @PostMapping("login")
