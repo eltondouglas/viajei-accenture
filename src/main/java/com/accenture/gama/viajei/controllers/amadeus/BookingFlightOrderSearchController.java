@@ -22,25 +22,26 @@ import io.swagger.annotations.ApiOperation;
 @Api(description = "Operations pertaining to booking Flight Orders")
 public class BookingFlightOrderSearchController {
 
-    @Autowired
-    private FlightOfferSearchService amadeusService;
+	@Autowired
+	private FlightOfferSearchService amadeusService;
 
-    @ApiOperation(value = "View a flight orders list")
-    @PostMapping("/flight-orders")
-    public FlightOrder creatFlightOrder(@RequestBody FlightOrderRequest flightOrderRequest) throws ResponseException {
-        return this.amadeusService.creatFlightOrder(flightOrderRequest);
-    }
+	@ApiOperation(value = "View a flight orders list")
+	@PostMapping("/flight-orders/{viajante}")
+	public FlightOrder creatFlightOrder(@PathVariable("viajante") Integer viajante,
+			@RequestBody FlightOrderRequest flightOrderRequest) throws ResponseException {
+		return this.amadeusService.creatFlightOrder(viajante, flightOrderRequest);
+	}
 
-    @ApiOperation(value = "View a flight orders by id")
-    @GetMapping("/flight-orders/{flightOrderId}")
-    FlightOrder getFlightOrder(@PathVariable String flightOrderId) throws ResponseException {
-        return this.amadeusService.getFlightOrderById(flightOrderId);
-    }
+	@ApiOperation(value = "View a flight orders by id")
+	@GetMapping("/flight-orders/{flightOrderId}")
+	FlightOrder getFlightOrder(@PathVariable String flightOrderId) throws ResponseException {
+		return this.amadeusService.getFlightOrderById(flightOrderId);
+	}
 
-    @ApiOperation(value = "Delete a flight orders by id")
-    @DeleteMapping("/flight-orders/{flightOrderId}")
-    FlightOrder deleteFlightOrder(@PathVariable String flightOrderId) throws ResponseException {
-        return this.amadeusService.deleteFlightOrderById(flightOrderId);
-    }
+	@ApiOperation(value = "Delete a flight orders by id")
+	@DeleteMapping("/flight-orders/{flightOrderId}")
+	FlightOrder deleteFlightOrder(@PathVariable String flightOrderId) throws ResponseException {
+		return this.amadeusService.deleteFlightOrderById(flightOrderId);
+	}
 
 }

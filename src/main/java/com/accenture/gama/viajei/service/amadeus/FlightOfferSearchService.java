@@ -1,19 +1,24 @@
 package com.accenture.gama.viajei.service.amadeus;
 
+import java.math.BigDecimal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.accenture.gama.viajei.model.amadeus.FlightOfferSearch;
 import com.accenture.gama.viajei.model.amadeus.FlightOfferSearchRequest;
 import com.accenture.gama.viajei.model.amadeus.FlightOrder;
 import com.accenture.gama.viajei.model.amadeus.FlightOrderRequest;
 import com.accenture.gama.viajei.model.amadeus.FlightPrice;
 import com.accenture.gama.viajei.model.amadeus.FlightPriceRequest;
+import com.accenture.gama.viajei.model.amadeus.SearchPrice;
+import com.accenture.gama.viajei.model.viajem.Reserva;
+import com.accenture.gama.viajei.repository.ReservaRepository;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Traveler;
 import com.google.gson.Gson;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class FlightOfferSearchService {
@@ -23,6 +28,9 @@ public class FlightOfferSearchService {
 
     @Autowired
     private Gson gson;
+    
+    @Autowired
+    ReservaRepository repository;
 
     public FlightOfferSearch[] getFlightOffers(FlightOfferSearchRequest flightOffers) throws ResponseException {
         try {
@@ -49,12 +57,27 @@ public class FlightOfferSearchService {
         }
     }
 
-    public FlightOrder creatFlightOrder(FlightOrderRequest flightOrderRequest) throws ResponseException {
+    public FlightOrder creatFlightOrder(Integer viajanteId, FlightOrderRequest flightOrderRequest) throws ResponseException {
         try {
             Traveler[] travelers = this.gson.fromJson(this.gson.toJson(flightOrderRequest.getTravelers()), Traveler[].class);
             com.amadeus.resources.FlightPrice flightPrice =  this.gson.fromJson(this.gson.toJson(flightOrderRequest.getFlightPrice()), com.amadeus.resources.FlightPrice.class);
             com.amadeus.resources.FlightOrder flightOrder = amadeus.booking.flightOrders.post(flightPrice, travelers);
-            return this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrder.class);
+            FlightOrder flightOrderResult = this.gson.fromJson(this.gson.toJson(flightOrder), FlightOrder.class);
+            if(flightOrderResult.getId()!=null) {
+    			Reserva r = new Reserva();
+    			r.setOrdemId(flightOrderResult.getId());
+    			FlightOfferSearch[] offers = flightOrderResult.getFlightOffers();
+    			Double price = 0.0;
+    			for (int i = 0; i < offers.length; i++) {
+    				SearchPrice sPrice = offers[i].getPrice();
+    				price += sPrice.getTotal();
+				}
+    			r.setPreco(new BigDecimal(price));
+    			r.setViajanteId(viajanteId);
+    			repository.save(r);
+    			
+    		}
+            return flightOrderResult;
         } catch (ResponseException e) {
             e.printStackTrace();
             throw new ResponseException(e.getResponse());
