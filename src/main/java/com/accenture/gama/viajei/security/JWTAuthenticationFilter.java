@@ -43,11 +43,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
         try {
-            //ApplicationUser creds = new ObjectMapper().readValue(req.getInputStream(), ApplicationUser.class);
             JsonObject creds = JsonParser.parseReader(req.getReader()).getAsJsonObject();
-            System.err.println(creds);
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken("TESTE@TESTE",
-                    "PASSWORD", Collections.emptyList()));
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(creds.get("username").getAsString(),
+                    creds.get("password").getAsString(), Collections.emptyList()));
         } catch (IOException e) {
             throw new BadCredentialsException(e.getMessage());
         }

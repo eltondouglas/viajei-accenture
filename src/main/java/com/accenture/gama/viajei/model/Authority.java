@@ -28,6 +28,10 @@ public class Authority  implements GrantedAuthority{
     @NotNull
     private String authority;
 
+    public Authority() {
+        super();
+    }
+
     public Authority(Long id, @NotNull String authority) {
         this.id = id;
         this.authority = authority;

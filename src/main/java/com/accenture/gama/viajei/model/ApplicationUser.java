@@ -33,11 +33,15 @@ public class ApplicationUser {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_authorities", joinColumns = {
             @JoinColumn(name = FK, nullable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = Authority.FK, nullable = false) })
     private Set<Authority> authorities;
+
+    public ApplicationUser() {
+        super();
+    }
 
     public ApplicationUser(Long id, String name, String username, String password, Set<Authority> authorities) {
         this.id = id;
@@ -46,6 +50,8 @@ public class ApplicationUser {
         this.password = password;
         this.authorities = authorities;
     }
+    
+
 
     public static String getPk() {
         return PK;
