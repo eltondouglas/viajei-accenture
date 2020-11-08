@@ -48,7 +48,7 @@ public class ReservaService {
 	}
 	
 	public void confirmarPagamento(String orderId) {
-		Reserva reserva = reservaRepository.findByReservaId(orderId);
+		Reserva reserva = reservaRepository.findByOrdemId(orderId);
 		try {
 			if(reserva!=null) {
 				Transaction ts = pagService.criarTransacao();

@@ -10,5 +10,5 @@ import com.accenture.gama.viajei.model.viajem.Reserva;
 public interface ReservaRepository extends CrudRepository<Reserva, Integer>{
 	
 	 List<Reserva> findByViajanteIdAndDataHoraBetween(Integer viajanteId, LocalDateTime inicio, LocalDateTime fim);
-	 Reserva findByReservaId(String orderId);
+	 Reserva findByOrdemId(String orderId);
 }

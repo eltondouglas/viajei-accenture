@@ -3,7 +3,7 @@ package com.accenture.gama.viajei.controllers;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +28,7 @@ public class ViajanteController {
 	
 	
 	@GetMapping
-//	@PreAuthorize(Roles.PRE_ADMIN)
+	@PreAuthorize(Roles.PRE_ADMIN)
 	public Iterable<Viajante> listar() {
 		return repository.findAll();
 	}
@@ -39,13 +39,13 @@ public class ViajanteController {
 	}
 	
 	@PutMapping
-//	@PreAuthorize(Roles.PRE_ADMIN)
+	@PreAuthorize(Roles.PRE_ADMIN)
 	public void update(@RequestBody Viajante cliente) {
 		service.save(cliente);
 	}
 	
 	@DeleteMapping("/{id}")
-//	@PreAuthorize(Roles.PRE_ADMIN)
+	@PreAuthorize(Roles.PRE_ADMIN)
 	public void delete(@PathParam("id") Integer id) {
 		repository.deleteById(id);
 	}

@@ -1,6 +1,7 @@
 package com.accenture.gama.viajei.model.viajem;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,9 @@ public class Reserva {
 	private String ordemId;
 
 	private BigDecimal preco;
+	
+	@Column(name = "dh_reserva")
+	private LocalDateTime dataHora = LocalDateTime.now();
 
 	@Column(name = "pagamento_id")
 	private Integer pagamentoId;

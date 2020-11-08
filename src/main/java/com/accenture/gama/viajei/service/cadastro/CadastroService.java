@@ -3,7 +3,7 @@ package com.accenture.gama.viajei.service.cadastro;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.accenture.gama.viajei.model.cadastro.Viajante;
@@ -11,25 +11,22 @@ import com.accenture.gama.viajei.model.gestao.Operador;
 import com.accenture.gama.viajei.model.perfil.Role;
 import com.accenture.gama.viajei.model.perfil.Usuario;
 import com.accenture.gama.viajei.repository.UsuarioRepostiry;
-import com.accenture.gama.viajei.repository.ViajanteRepository;
 
 
 
 @Service
 public class CadastroService {
 	
-	@Autowired
-	private ViajanteRepository repository;
 		
 	@Autowired
 	private UsuarioRepostiry userRepository;
 	
-//	@Autowired
-//	private PasswordEncoder encoder;
+	@Autowired
+	private PasswordEncoder encoder;
 	private Integer saveUsuario(Usuario usuario) {
 	
-//		String senhaCriptografada = encoder.encode(usuario.getSenha());
-//		usuario.setSenha(senhaCriptografada);
+		String senhaCriptografada = encoder.encode(usuario.getSenha());
+		usuario.setSenha(senhaCriptografada);
 	
 		if(!userRepository.existsByLogin(usuario.getLogin())) {
 			usuario = userRepository.save(usuario);
