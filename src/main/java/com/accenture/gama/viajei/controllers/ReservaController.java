@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accenture.gama.viajei.model.dto.PagamentoDTO;
 import com.accenture.gama.viajei.model.dto.ViajanteReservaDTO;
 import com.accenture.gama.viajei.model.enums.Roles;
+import com.accenture.gama.viajei.model.viajem.Reserva;
 import com.accenture.gama.viajei.service.reserva.ReservaService;
 
 import io.swagger.annotations.ApiImplicitParam;
@@ -38,7 +39,7 @@ public class ReservaController {
 	@PostMapping("/pagamento")
 	@ApiImplicitParams(value = @ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header"))
 	@PreAuthorize(Roles.PRE_USER_ADMIN)
-	public void criarPagamento(@RequestBody PagamentoDTO orderId) {
-		service.confirmarPagamento(orderId);
+	public Reserva criarPagamento(@RequestBody PagamentoDTO orderId) {
+		return service.confirmarPagamento(orderId);
 	}
 }
