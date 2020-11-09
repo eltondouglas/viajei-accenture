@@ -20,48 +20,49 @@ import me.pagar.model.PagarMeException;
 import me.pagar.model.Transaction;
 import me.pagar.model.Transaction.Status;
 
-
 @Component
 public class ReservaService {
-	
+
 	@Autowired
 	private ViajanteRepository viajanteRepository;
-	
+
 	@Autowired
 	private ReservaRepository reservaRepository;
-	
+
 	@Autowired
 	private PagarmeService pagService;
-	
-	
+
 	public ViajanteReservaDTO viajanteReservas(Integer viajanteId, LocalDateTime inicio, LocalDateTime fim) {
 		ViajanteReservaDTO detalhe = new ViajanteReservaDTO();
-		Optional <Viajante> viajante = viajanteRepository.findById(viajanteId);
+		Optional<Viajante> viajante = viajanteRepository.findById(viajanteId);
 		detalhe.setViajante(viajante.get());
 		detalhe.setReservas(listarReservas(viajanteId, inicio, fim));
 		return detalhe;
-		
+
 	}
+
 	private List<Reserva> listarReservas(Integer viajanteId, LocalDateTime inicio, LocalDateTime fim) {
-		
-		List<Reserva> findByDataHoraBetween = reservaRepository.findByViajanteIdAndDataHoraBetween(viajanteId, inicio, fim);
+
+		List<Reserva> findByDataHoraBetween = reservaRepository.findByViajanteIdAndDataHoraBetween(viajanteId, inicio,
+				fim);
 		return findByDataHoraBetween;
 	}
-	
-	public void confirmarPagamento(PagamentoDTO pagamentoDTO) {
+
+	public Reserva confirmarPagamento(PagamentoDTO pagamentoDTO) {
 		Reserva reserva = reservaRepository.findByOrdemId(pagamentoDTO.getOrderId());
 		try {
-			if(reserva!=null) {
+			if (reserva != null) {
 				Transaction ts = pagService.criarTransacao();
-				if(ts.getStatus()== Status.REFUSED) {
+				if (ts.getStatus() == Status.REFUSED) {
 					reserva.setPagamentoId(ts.getId());
 					reserva.setStatus(ReservaStatus.PG);
 					reservaRepository.save(reserva);
 				}
-				
+
 			}
 		} catch (PagarMeException e) {
 			e.printStackTrace();
 		}
+		return reserva;
 	}
 }

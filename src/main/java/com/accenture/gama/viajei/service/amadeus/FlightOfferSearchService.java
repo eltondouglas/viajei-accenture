@@ -13,6 +13,7 @@ import com.accenture.gama.viajei.model.amadeus.FlightPrice;
 import com.accenture.gama.viajei.model.amadeus.FlightPriceRequest;
 import com.accenture.gama.viajei.model.amadeus.SearchPrice;
 import com.accenture.gama.viajei.model.viajem.Reserva;
+import com.accenture.gama.viajei.model.viajem.enumns.ReservaStatus;
 import com.accenture.gama.viajei.repository.ReservaRepository;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
@@ -74,6 +75,7 @@ public class FlightOfferSearchService {
 				}
     			r.setPreco(new BigDecimal(price));
     			r.setViajanteId(viajanteId);
+    			r.setStatus(ReservaStatus.PG);
     			repository.save(r);
     			
     		}
