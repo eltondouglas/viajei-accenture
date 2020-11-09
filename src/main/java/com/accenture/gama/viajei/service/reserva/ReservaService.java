@@ -7,13 +7,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.accenture.gama.viajei.service.pagarme.PagarmeService;
 import com.accenture.gama.viajei.model.cadastro.Viajante;
+import com.accenture.gama.viajei.model.dto.PagamentoDTO;
 import com.accenture.gama.viajei.model.dto.ViajanteReservaDTO;
 import com.accenture.gama.viajei.model.viajem.Reserva;
 import com.accenture.gama.viajei.model.viajem.enumns.ReservaStatus;
 import com.accenture.gama.viajei.repository.ReservaRepository;
 import com.accenture.gama.viajei.repository.ViajanteRepository;
+import com.accenture.gama.viajei.service.pagarme.PagarmeService;
 
 import me.pagar.model.PagarMeException;
 import me.pagar.model.Transaction;
@@ -47,8 +48,8 @@ public class ReservaService {
 		return findByDataHoraBetween;
 	}
 	
-	public void confirmarPagamento(String orderId) {
-		Reserva reserva = reservaRepository.findByOrdemId(orderId);
+	public void confirmarPagamento(PagamentoDTO pagamentoDTO) {
+		Reserva reserva = reservaRepository.findByOrdemId(pagamentoDTO.getOrderId());
 		try {
 			if(reserva!=null) {
 				Transaction ts = pagService.criarTransacao();

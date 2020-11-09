@@ -39,6 +39,10 @@ public abstract class Usuario {
 	@JoinTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "login",nullable=false), inverseJoinColumns = @JoinColumn(name = "role",nullable=false))
 	private Set<Role> roles = new HashSet<>();
 	
+	public Usuario() {
+		
+	}
+	
 
 	public Integer getId() {
 		return id;
