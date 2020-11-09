@@ -17,9 +17,6 @@ public class Viajante extends Usuario {
 	@Column(length = 60)
 	private String nome;
 	
-	@Column(length = 15)
-	private String cpfCnpj;
-	
 	@Column(length = 60)
 	private String email;
 	
@@ -67,15 +64,6 @@ public class Viajante extends Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-
-	public String getCpfCnpj() {
-		return cpfCnpj;
-	}
-
-	public void setCpfCnpj(String cpfCnpj) {
-		this.cpfCnpj = cpfCnpj;
 	}
 
 	public String getEmail() {
