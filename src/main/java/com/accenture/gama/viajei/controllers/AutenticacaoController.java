@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accenture.gama.viajei.model.cadastro.Viajante;
 import com.accenture.gama.viajei.model.dto.Credencial;
 import com.accenture.gama.viajei.model.dto.Login;
+import com.accenture.gama.viajei.model.dto.ViajanteDTO;
 import com.accenture.gama.viajei.model.perfil.Usuario;
 import com.accenture.gama.viajei.repository.UsuarioRepostiry;
-import com.accenture.gama.viajei.service.cadastro.CadastroService;
 import com.accenture.gama.viajei.security.JwtTokenProvider;
+import com.accenture.gama.viajei.service.cadastro.CadastroService;
 
 
 @RestController
@@ -37,8 +37,8 @@ public class AutenticacaoController {
 	private UsuarioRepostiry userRepository;
 	
 	@PostMapping("/signin")
-	public void signin(@RequestBody Viajante cliente) {
-		service.save(cliente);
+	public void signin(@RequestBody ViajanteDTO viajante) {		
+		service.save(viajante.toViajante());
 	}
 	    
 	
@@ -64,11 +64,5 @@ public class AutenticacaoController {
 		return ResponseEntity.ok(credencial);
 		
         
-	}
-	
-	@PostMapping("logout")
-	public void logout() {
-		throw new IllegalStateException(
-                "This method shouldn't be called. It's implemented by Spring Security filters.");
 	}
 }

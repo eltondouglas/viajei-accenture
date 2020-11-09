@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accenture.gama.viajei.model.cadastro.Viajante;
+import com.accenture.gama.viajei.model.dto.ViajanteDTO;
 import com.accenture.gama.viajei.model.enums.Roles;
 import com.accenture.gama.viajei.repository.ViajanteRepository;
 import com.accenture.gama.viajei.service.cadastro.CadastroService;
+
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 
 @RestController
 @RequestMapping("/viajantes")
@@ -28,24 +32,29 @@ public class ViajanteController {
 	
 	
 	@GetMapping
-	@PreAuthorize(Roles.PRE_ADMIN)
+	@ApiImplicitParams(value = @ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header"))
+	@PreAuthorize(Roles.PRE_USER_ADMIN)
 	public Iterable<Viajante> listar() {
 		return repository.findAll();
 	}
 	
 	@PostMapping
-	public Integer save(@RequestBody Viajante cliente) {
-		return service.save(cliente);
+	@ApiImplicitParams(value = @ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header"))
+	@PreAuthorize(Roles.PRE_USER_ADMIN)
+	public Integer save(@RequestBody ViajanteDTO cliente) {
+		return service.save(cliente.toViajante());
 	}
 	
 	@PutMapping
-	@PreAuthorize(Roles.PRE_ADMIN)
-	public void update(@RequestBody Viajante cliente) {
-		service.save(cliente);
+	@PreAuthorize(Roles.PRE_USER_ADMIN)
+	@ApiImplicitParams(value = @ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header"))
+	public void update(@RequestBody ViajanteDTO cliente) {
+		service.save(cliente.toViajante());
 	}
 	
 	@DeleteMapping("/{id}")
-	@PreAuthorize(Roles.PRE_ADMIN)
+	@ApiImplicitParams(value = @ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header"))
+	@PreAuthorize(Roles.PRE_USER_ADMIN)
 	public void delete(@PathParam("id") Integer id) {
 		repository.deleteById(id);
 	}

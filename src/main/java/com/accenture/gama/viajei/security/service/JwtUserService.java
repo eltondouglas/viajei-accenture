@@ -23,7 +23,7 @@ public class JwtUserService implements UserDetailsService  {
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		Usuario usuario = repository.findByLogin(login);
 		if(usuario == null){
-			throw new UsernameNotFoundException("Usu√°rio n√£o existe");
+			throw new UsernameNotFoundException("Usu·rio n„o existe");
 		}
 		Set<SimpleGrantedAuthority> roles=getAuthority(usuario);
 		return new org.springframework.security.core.userdetails.User(usuario.getLogin(), usuario.getSenha(), roles);

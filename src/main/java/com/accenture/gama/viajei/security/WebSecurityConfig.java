@@ -20,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Resource(name = "jwtUserService")
@@ -67,9 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(SWAGGER_WHITELIST).permitAll()
                 .antMatchers(HttpMethod.POST, "/signin").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/viajantes").permitAll()
-                .antMatchers("/voos/**").permitAll()
-                .antMatchers("/flights/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/logout").permitAll()
+                .antMatchers("/shopping/flight-offers/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
